@@ -40,9 +40,6 @@ def commonPassword(psswd:str):
     return True
 
 def verification(userInfo:list[4], psswd:str):
-    print(userInfo)
-    print(hashFunc(userInfo[1], psswd))
-    print(userInfo[2])
     return str(userInfo[2]) == str(hashFunc(userInfo[1], psswd))
 
 if __name__ == '__main__':
