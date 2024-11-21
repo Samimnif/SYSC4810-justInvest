@@ -5,6 +5,14 @@ def hashFunc(salt, psswd:str):
     h.update((salt+psswd).encode())
     return h.hexdigest()
 
+def getAllUsernames():
+    listUser = []
+    with open("passwd.txt", "r") as file:
+        for line in file:
+            userInfo = line.split(",")
+            listUser.append(userInfo[0].lower())
+    return listUser
+
 def validate(username:str, psswd:str):
     length = False
     upperCase = False
@@ -12,13 +20,14 @@ def validate(username:str, psswd:str):
     number = False
     special = False
     uname = False
+    notExistingUserName = False
     digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     specialChar = ["!", "@", "#", "$", "%", "*", "&"]
     for i in psswd:
         #print(i)
-        if i == i.upper():
+        if i.isupper():
             upperCase = True
-        if i == i.lower():
+        if i.islower():
             lowerCase = True
         if i in digits:
             number = True
@@ -26,9 +35,11 @@ def validate(username:str, psswd:str):
             special = True
     if username.lower() not in psswd.lower():
         uname = True
+    if username.lower() not in getAllUsernames():
+        notExistingUserName = True
     if len(psswd) >= 8 and len(psswd) <= 12:
         length = True
-    if upperCase and lowerCase and number and special and uname and length:
+    if upperCase and lowerCase and number and special and uname and length and notExistingUserName:
         return True
     return False
 
@@ -43,6 +54,7 @@ def verification(userInfo:list[4], psswd:str):
     return str(userInfo[2]) == str(hashFunc(userInfo[1], psswd))
 
 if __name__ == '__main__':
+    print(getAllUsernames())
     print(validate("samimnif","SamiMnif123"))
     print(validate("hedimnif", "SamiMnif123"))
     print(validate("samimnif", "SamiMnif122!"))
