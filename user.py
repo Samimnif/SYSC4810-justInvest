@@ -9,12 +9,6 @@ class role(Enum):
     FPLANNER = 4 #Financial Planner
     TELLER = 5
 
-class user:
-    def __init__(self, username:str, password:str, role:role):
-        self.__username = username
-        self.__password = password
-        self.role = role
-
 class object:
     def __init__(self, title:str, view:list, edit:list):
         self.title = title
@@ -26,6 +20,21 @@ class object:
         return role in self.__view
     def authorizedOperations(self, role:int):
         return self.checkViewPermission(role), self.checkEditPermission(role)
+    def checkOperation(self, role:int, viewP, editP):
+        return False
+
+class user:
+    def __init__(self, username: str, password: str, role: role):
+        self.__username = username
+        self.__password = password
+        self.role = role
+        self.__authorizedOp = []
+    def addOp(self, oj: object, viewP: bool, editP: bool):
+        self.__authorizedOp.append([oj, viewP, editP])
+    def checkPerm(self, numO:int):
+        if numO >= len(self.__authorizedOp):
+            return [None, False, False]
+        return self.__authorizedOp[numO]
 
 
 
@@ -37,7 +46,7 @@ def addUser(username:str, psswd:str, role):
         salt = secrets.token_hex(32)
         hashPsswd = hashFunc(salt, psswd)
         with open("passwd.txt", "a") as file:
-            file.write(username+","+salt+","+hashPsswd+","+role)
+            file.write(username+","+salt+","+hashPsswd+","+role+"\n")
         return True
     return False
 
@@ -47,7 +56,7 @@ def checkUser(username:str, psswd:str):
             userInfo = line.split(",")
             if userInfo[0] == username:
                 return verification(userInfo, psswd), int(userInfo[3])
-    return False
+    return False, False
 
 if __name__ == '__main__':
     checkUser("samimnif", "asdada")
