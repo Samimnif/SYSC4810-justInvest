@@ -24,6 +24,14 @@ with open('objects.json', 'r') as file:
         operations.append(object(i, data[i][0], data[i][1]))
 
 def login():
+    """
+    Problem 4
+    This function just handles the login interface, where it displays the options and the inputs
+    to the user to be able to login and then if authenticated correctly, then it show sthe user information, role
+    and a list of access rights/permissions according to access control.
+
+    :return: True if the login is correct, False otherwise
+    """
     global sessionUser
     print("Please enter your Username and Password to login:")
     username = input("Enter username: ")
@@ -45,6 +53,13 @@ def login():
     return False
 
 def signup():
+    """
+    Problem 3
+    This function handles the signup process using the interface to request details from the user.
+    It will check if the username and password are valid and then saves it to the passwd.txt file
+
+    :return:
+    """
     print("Please select one of these roles:\n1. Client\n2. Premium Client\n3. Financial Advisor\n4. Financial Planner\n5.Teller")
     while True:
         roleSelected = input("> ")
@@ -64,6 +79,12 @@ def signup():
         print(RED + "You didn't satisfy the requirements, please try again ...", RESET)
 
 def set_time():
+    """
+    This function will help us test the Teller account where the TA can adjust the system time
+    by entering a new time using the 24hr system (17:00 or 21:00)
+
+    :return:
+    """
     global SYSTEM_TIME
     print("Set System Time in 24h format:"+PURPLE+" (FOR TESTING PURPOSES ONLY)", RESET)
     time = input("> ")

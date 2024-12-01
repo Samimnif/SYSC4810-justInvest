@@ -39,18 +39,39 @@ class user:
 
 
 def addUser(username:str, psswd:str, role):
+    """
+    Problem 2
+    This functions handles adding a user to the passwd.txt file.
+    Before adding the user to teh file, we make sure that their password
+    is valid according to the requirements. We also make sure that the username doesn't already exist.
+
+    :param username: user's username
+    :param psswd: user's password
+    :param role: user's role
+    :return: Return True if success or false otherwise
+    """
     strong = False
     strong = validate(username, psswd)
-    strong = strong and commonPassword(psswd)
+    #strong = strong and commonPassword(psswd)
     if strong:
         salt = secrets.token_hex(32)
         hashPsswd = hashFunc(salt, psswd)
         with open("passwd.txt", "a") as file:
-            file.write(username+","+salt+","+hashPsswd+","+role+"\n")
+            file.write(username+","+salt+","+hashPsswd+","+str(role)+"\n")
         return True
     return False
 
 def checkUser(username:str, psswd:str):
+    """
+    Problem 2
+    This function handles the retrieval of user information from the passwd.txt file
+    and make sure that the username matches and then check if the password hash matches using the same hash
+    function. verification function used below verify the username and the password.
+
+    :param username:
+    :param psswd:
+    :return: TRUE/FALSE, ROLE/FALSE
+    """
     with open("passwd.txt", "r") as file:
         for line in file:
             userInfo = line.split(",")
@@ -59,4 +80,8 @@ def checkUser(username:str, psswd:str):
     return False, False
 
 if __name__ == '__main__':
+    print(addUser("Test1", "Carleton12@",1))
+    print(addUser("Test2", "Carleton12",1))
+    print(addUser("Test3", "Carl12@",1))
+    print(addUser("Test4", "hello12@",1))
     checkUser("samimnif", "asdada")

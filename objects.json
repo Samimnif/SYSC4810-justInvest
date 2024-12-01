@@ -1,8 +1,8 @@
 {
-  "account balance": [[1,2,3,4,5,6],[]],
-  "investment portfolio": [[1,3,6],[2,4,5]],
+  "account balance": [[1,2,3,4,5],[]],
+  "investment portfolio": [[1,5],[2,3,4]],
   "financial advisor contact info": [[1],[]],
   "financial planner contact info": [[2],[]],
-  "money market instruments": [[4],[]],
-  "private consumer instruments": [[4,5],[]]
+  "money market instruments": [[3],[]],
+  "private consumer instruments": [[3,4],[]]
 }
