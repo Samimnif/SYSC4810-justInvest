@@ -60,7 +60,7 @@ def signup():
 
     :return:
     """
-    print("Please select one of these roles:\n1. Client\n2. Premium Client\n3. Financial Advisor\n4. Financial Planner\n5.Teller")
+    print("Please select one of these roles:\n1. Client\n2. Premium Client\n3. Financial Advisor\n4. Financial Planner\n5. Teller")
     while True:
         roleSelected = input("> ")
         if roleSelected in ["1", "2", "3", "4", "5"]:
