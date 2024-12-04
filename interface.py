@@ -95,7 +95,7 @@ def set_time():
 if __name__ == '__main__':
     print(BLUE,"Hello there! Welcome to justInvest Banking System",RESET)
     while True:
-        print("System Clock: " + BLUE + SYSTEM_TIME + RESET)
+        print("System Clock: " + PURPLE + SYSTEM_TIME + RESET)
         print("Please Select one of these options:\n1: Login\n2: Sign-Up\n3: Change System Clock")
         sel1 = input("> ")
         if sel1 == "1":
