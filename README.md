@@ -1,7 +1,9 @@
 # SYSC4810 Assignment
 > [!IMPORTANT]  
-> Student Name: Sami Mnif
+> Student Name: Sami Mnif <br>
 > ID: 101199669
+> GitHub Link to Repo: [Link](https://github.com/Samimnif/SYSC4810-justInvest)
+
 ## Instructions
 > run `python3 interface.py` on the VM terminal
 
