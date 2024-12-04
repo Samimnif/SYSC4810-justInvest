@@ -38,7 +38,7 @@ def login():
     if verf:
         if role == 5:
             current_time = datetime.strptime(SYSTEM_TIME, "%H:%M").time()
-            if start_Teller <= current_time <= end_Teller:
+            if start_Teller <= current_time < end_Teller:
                 print("Teller system access"+GREEN+" GRANTED", RESET)
             else:
                 print(RED+"Teller is not allowed to login at this time", RESET)
