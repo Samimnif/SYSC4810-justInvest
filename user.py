@@ -4,9 +4,9 @@ import secrets
 
 class role(Enum):
     CLIENT = 1
-    PCLIENT = 2 #Premium Client
-    FADVISOR = 3 #Financial Advisor
-    FPLANNER = 4 #Financial Planner
+    PREMIUM_CLIENT = 2 #Premium Client
+    FINANCIAL_PLANNER = 3 #Financial Advisor
+    FINANCIAL_ADVISOR = 4 #Financial Planner
     TELLER = 5
 
 class object:
