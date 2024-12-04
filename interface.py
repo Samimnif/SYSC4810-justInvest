@@ -1,5 +1,3 @@
-from Tools.scripts.stable_abi import REST_ROLES
-
 from user import *
 import json
 from datetime import datetime, time
